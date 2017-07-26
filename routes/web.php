@@ -21,11 +21,13 @@ Route::get('/', function () {
 //     return view('about', compact('tasks'));
 // });
 Route::get('/tasks', function () {
-    $tasks = DB::table('tasks')->get();
+    // $tasks = DB::table('tasks')->get();
+    $tasks = App\Task::all();
     return view('task/all', compact('tasks'));
 });
 Route::get('/tasks/{id}', function ($id) {
     // dd($id);
-    $tasks = DB::table('tasks')->find($id);
+    // $tasks = DB::table('tasks')->find($id);
+    $tasks = App\Task::find($id);
     return view('task/one', compact('tasks'));
 });
