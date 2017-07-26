@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use App\Task;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,12 +22,12 @@ Route::get('/', function () {
 // });
 Route::get('/tasks', function () {
     // $tasks = DB::table('tasks')->get();
-    $tasks = App\Task::all();
+    $tasks = Task::all();
     return view('task/all', compact('tasks'));
 });
 Route::get('/tasks/{id}', function ($id) {
     // dd($id);
     // $tasks = DB::table('tasks')->find($id);
-    $tasks = App\Task::find($id);
+    $tasks = Task::find($id);
     return view('task/one', compact('tasks'));
 });
