@@ -14,20 +14,6 @@ use App\Task;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/about', function () {
-//     $tasks = DB::table('tasks')->get();
-//     // return $tasks;
-//     // $tasks = array('read','write','run','jump');
-//     return view('about', compact('tasks'));
-// });
-Route::get('/tasks', function () {
-    // $tasks = DB::table('tasks')->get();
-    $tasks = Task::all();
-    return view('task/all', compact('tasks'));
-});
-Route::get('/tasks/{id}', function ($id) {
-    // dd($id);
-    // $tasks = DB::table('tasks')->find($id);
-    $tasks = Task::find($id);
-    return view('task/one', compact('tasks'));
-});
+
+Route::get('/tasks', 'TasksController@index');
+Route::get('/tasks/{id}', 'TasksController@show');
