@@ -1,6 +1,6 @@
 @extends('layouts/master')
 
-@section('posts')
+@section('contents')
     <h4><small>RECENT POSTS</small></h4>
     <hr>
     <h2>I Love Food</h2>

@@ -1,10 +1,10 @@
 <div class="col-sm-3 sidenav">
     <h4>John's Blog</h4>
     <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1">Home</a></li>
-        <li><a href="#section2">Friends</a></li>
-        <li><a href="#section3">Family</a></li>
-        <li><a href="#section3">Photos</a></li>
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/posts/create">Create</a></li>
+        {{-- <li><a href="#section3">Family</a></li>
+        <li><a href="#section3">Photos</a></li> --}}
     </ul><br>
     <div class="input-group">
         <input type="text" class="form-control" placeholder="Search Blog..">

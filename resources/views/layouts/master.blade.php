@@ -11,7 +11,7 @@
             @include('layouts/sidenav')
             <div class="col-sm-9">
                 {{-- yield posts --}}
-                @yield('posts')
+                @yield('contents')
             </div>
         </div>
     </div>
