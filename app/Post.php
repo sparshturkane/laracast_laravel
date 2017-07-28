@@ -9,5 +9,10 @@ class Post extends Model
     protected $fillable = [
         'title', 'body'
     ];
-    // $guarded
+
+    public function comments()
+    {
+        // return $this->hasMany(Comment::class);
+        return $this->hasMany('App\Comment');
+    }
 }
