@@ -1,6 +1,7 @@
 @extends('layouts/master')
 @section('contents')
     <h1>Create Post</h1>
+    <hr>
     <form method="post" action="/posts">
          {{ csrf_field() }}
         <div class="form-group">
