@@ -3,14 +3,20 @@
 @section('contents')
     @include('posts/post')
     <h4>Leave a Comment:</h4>
-    <form role="form">
+    @include('posts/error')
+    @include('posts/status')
+    <form role="form" method="post" action="/posts/{{$post->id}}/comments/">
+        {{ csrf_field() }}
         <div class="form-group">
-            <textarea class="form-control" rows="3" required></textarea>
+            <textarea class="form-control" rows="3" required name="body"></textarea>
         </div>
-        <button type="button" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success">Submit</button>
     </form>
     <br><br>
-    <p><span class="badge">2</span> Comments:</p><br>
+    @php
+        $commentCount = count($post->comments);
+    @endphp
+    <p><span class="badge">{{$commentCount}}</span> Comments:</p><br>
     @foreach ($post->comments as $comment)
         <div class="row">
             <div class="col-sm-2 text-center">
