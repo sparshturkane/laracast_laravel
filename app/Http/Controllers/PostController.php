@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Http\Requests\createPostFormRequest;
 class PostController extends Controller
 {
     /**
@@ -36,7 +37,7 @@ class PostController extends Controller
     // {
     //     //
     // }
-    public function store()
+    public function store(createPostFormRequest $request)
     {
         Post::create(
             request([
@@ -44,7 +45,7 @@ class PostController extends Controller
                 'body'
             ])
         );
-        return redirect('/');
+        return redirect()->back()->with('status', 'Your post has been created!');
     }
 
     /**
