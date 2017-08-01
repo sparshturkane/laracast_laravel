@@ -7,6 +7,10 @@ use App\Post;
 use App\Http\Requests\createPostFormRequest;
 class PostController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,12 +44,24 @@ class PostController extends Controller
     // }
     public function store(createPostFormRequest $request)
     {
-        Post::create(
-            request([
-                'title',
-                'body'
-            ])
-        );
+        // Post::create(
+        //     request([
+        //         'title',
+        //         'body',
+        //         'user_id'
+        //     ])
+        // );
+        //
+        // $user = ['title' => request('title'),
+        // 'body' => request('body'),
+        // 'user_id' => auth()->id()];
+        // dd($user);
+        Post::create([
+            'user_id' => auth()->id(),
+            'title' => request('title'),
+            'body' => request('body'),
+
+        ]);
         return redirect()->back()->with('status', 'Your post has been created!');
     }
 

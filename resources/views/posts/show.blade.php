@@ -5,14 +5,17 @@
     <h4>Leave a Comment:</h4>
     @include('posts/error')
     @include('posts/status')
-    <form role="form" method="post" action="/posts/{{$post->id}}/comments/">
-        {{ csrf_field() }}
-        <div class="form-group">
-            <textarea class="form-control" rows="3" required name="body"></textarea>
-        </div>
-        <button type="submit" class="btn btn-success">Submit</button>
-    </form>
-    <br><br>
+    @if (auth()->check())
+        <form role="form" method="post" action="/posts/{{$post->id}}/comments/">
+            {{ csrf_field() }}
+            <div class="form-group">
+                <textarea class="form-control" rows="3" required name="body"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+        <br><br>
+    @endif
+
     @php
         $commentCount = count($post->comments);
         // dd($post);
