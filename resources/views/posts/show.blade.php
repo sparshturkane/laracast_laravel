@@ -15,6 +15,7 @@
     <br><br>
     @php
         $commentCount = count($post->comments);
+        // dd($post);
     @endphp
     <p><span class="badge">{{$commentCount}}</span> Comments:</p><br>
     @foreach ($post->comments as $comment)

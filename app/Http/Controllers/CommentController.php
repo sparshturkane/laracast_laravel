@@ -35,10 +35,13 @@ class CommentController extends Controller
      */
     public function store(Post $post)
     {
-        Comment::create([
-            'body' => request('body'),
-            'post_id' => $post->id
-        ]);
+        // add a comment to a post
+        $post->addComment(request('body'));
+        // dd($post->addComment());
+        // Comment::create([
+        //     'body' => request('body'),
+        //     'post_id' => $post->id
+        // ]);
 
         return redirect()->back()->with('status', 'Your Comment added successfully!');
     }
