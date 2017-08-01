@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class SessionController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('guest', ['except' => 'destroy']);
+    }
+
     public function index()
     {
 
@@ -13,12 +18,25 @@ class SessionController extends Controller
 
     public function create()
     {
-        return redirect('/');
+        return view('sessions/create');
     }
 
-    public function store(Request $request)
+    public function store()
     {
+        // 1. Atempt to authenticate the user
+        // 2. If not, redirect back.
+        // 3. If so, sign them in.
+        // 4. Redirect to the home page.
 
+        //authenticate
+        // dd(request('password'));
+        if (! auth()->attempt(request(['email', 'password']))){
+            return back()->withErrors([
+                'message' => 'Please check your credentials'
+            ]);
+        }
+
+        return redirect()->home();
     }
 
     public function show($id)

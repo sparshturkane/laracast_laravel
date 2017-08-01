@@ -27,7 +27,7 @@
                 <img src="https://d28idop5uo5klu.cloudfront.net/comfy/cms/files/files/000/000/089/original/placeholder.png" class="img-circle" height="65" width="65" alt="Avatar">
             </div>
             <div class="col-sm-10">
-                <h4>username <small>{{$comment->created_at->toFormattedDateString()}}</small></h4>
+                <h4>{{$comment->user->name}} <small>{{$comment->created_at->toFormattedDateString()}}</small></h4>
                 <p>
                     {{$comment->body}}
                 </p>

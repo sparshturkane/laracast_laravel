@@ -32,7 +32,11 @@ class RegistrationController extends Controller
         ]);
 
         // Create user
-        $user = User::create(request(['name', 'email', 'password'])); // this user is stored in db using eloquent create command
+        $user = User::create([
+            'name' => request('name'),
+            'email' => request('email'),
+            'password' => bcrypt(request('password'))
+        ]); // this user is stored in db using eloquent create command
 
         // Sign them in.
         auth()->login($user); //using auth helper
